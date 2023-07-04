@@ -61,4 +61,4 @@ console.log(findMin(a));
 console.log(findMax(a));
 
 //Recursive version
-//Depth first
+//Depth first search
