@@ -17,8 +17,10 @@ b.left = d;
 b.right = e;
 c.right = f;
 
-//depth first traversal
-const depthFirstSearch = (root) => {
+//TRAVERSALS
+
+//depth first traversal iterative Right->Left
+const depthFirstValues = (root) => {
     if (root === null) return [];
     const result = [];
     const stack = [root];
@@ -35,13 +37,57 @@ const depthFirstSearch = (root) => {
     return result;
 };
 
-//depth first traversal with recursion
-const depthFirstSearchRecursive = (root) => {
+//depth first traversal with recursion Right->Left
+const depthFirstValuesRecursive = (root) => {
     if (root === null) return [];
-    const leftValues = depthFirstSearch(root.left);
-    const rightValues = depthFirstSearch(root.right);
+    const leftValues = depthFirstValuesRecursive(root.left);
+    const rightValues = depthFirstValuesRecursive(root.right);
     return [root.value, ...leftValues, ...rightValues];
 };
 
-console.log(depthFirstSearch(a));
-console.log(depthFirstSearchRecursive(a));
+console.log(depthFirstValues(a));
+console.log(depthFirstValuesRecursive(a));
+
+//breadth first traversal iterative Right->Left
+const breadthFirstValues = (root) => {
+    if (root === null) return [];
+    const values = [];
+    const queue = [root];
+    while (queue.length > 0) {
+        const current = queue.shift();
+        values.push(current.value);
+        if (current.left !== null) queue.push(current.left);
+        if (current.right !== null) queue.push(current.right);
+    }
+    return values;
+};
+
+console.log(breadthFirstValues(a));
+
+//SEARCH FOR VALUES
+
+//depth first search for values using recursive approach
+const depthFirstSearchRecursive = (root, target) => {
+    if (root === null) return false;
+    if (root.value === target) return true;
+    return (
+        depthFirstSearchRecursive(root.left, target) ||
+        depthFirstSearchRecursive(root.right, target)
+    );
+};
+
+//depth first search for values using iterative approach
+const depthFirstSearchIterative = (root, target) => {
+    if (root === null) return false;
+    const queue = [root];
+    while (queue.length > 0) {
+        const current = queue.shift();
+        if (current.value === target) return true;
+        if (current.left !== null) queue.push(current.left);
+        if (current.right !== null) queue.push(current.right);
+    }
+    return false;
+};
+
+console.log(depthFirstSearchRecursive(a, "c"));
+console.log(depthFirstSearchIterative(a, "f"));
