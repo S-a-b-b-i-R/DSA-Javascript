@@ -19,7 +19,7 @@ c.right = f;
 
 //Iterative version
 //Breadth-first
-function findMin(root) {
+function findMinBFI(root) {
     if (root === null) return null;
     let min = root.value;
     let queue = [root];
@@ -38,7 +38,7 @@ function findMin(root) {
     return min;
 }
 
-function findMax(root) {
+function findMaxBFI(root) {
     if (root === null) return null;
     let max = root.value;
     let queue = [root];
@@ -57,8 +57,31 @@ function findMax(root) {
     return max;
 }
 
-console.log(findMin(a));
-console.log(findMax(a));
+console.log(findMinBFI(a));
+console.log(findMaxBFI(a));
+
+//Iterative verion
+//Depth-First
+function finMinDFI(root) {
+    if (root === null) return null;
+    let min = Infinity;
+    let stack = [root];
+    while (stack.length > 0) {
+        let node = stack.pop();
+        if (node.left !== null) {
+            stack.push(node.left);
+        }
+        if (node.right !== null) {
+            stack.push(node.right);
+        }
+        if (min > node.value) {
+            min = node.value;
+        }
+    }
+    return min;
+}
+
+console.log(finMinDFI(a));
 
 //Recursive version
 //Depth first search
