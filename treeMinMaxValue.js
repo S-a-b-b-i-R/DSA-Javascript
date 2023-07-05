@@ -85,3 +85,11 @@ console.log(finMinDFI(a));
 
 //Recursive version
 //Depth first search
+function treeMinRecursive(root) {
+    if (root === null) return Infinity;
+    const leftMin = treeMinRecursive(root.left);
+    const rightMin = treeMinRecursive(root.right);
+    return Math.min(root.value, leftMin, rightMin);
+}
+
+console.log(treeMinRecursive(a));
