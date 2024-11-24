@@ -5,23 +5,25 @@ function factorial(n) {
         return n * factorial(n - 1);
     }
 }
-
-console.log(fibonnaci(18));
-console.log(dpFib(18));
-console.log(dpMFib(18));
+console.time();
+console.log(dpFib(50));
+console.timeEnd();
+// console.log(dpFib(30));
+// console.log(dpMFib(30));
 
 function fibonnaci(n) {
-    if (n >= 3) {
-        return fibonnaci(n - 1) + fibonnaci(n - 2);
-    } else {
+    if (n <= 2) {
         return 1;
+    } else {
+        return fibonnaci(n - 1) + fibonnaci(n - 2);
+
     }
 }
 
 //dynamic programming using memoization
 // starting from 0 index
 function dpMFib(n, memo = {}) {
-    if (n === 1 || n === 2) {
+    if (n <= 2) {
         return 1;
     }
     if (memo[n]) {
