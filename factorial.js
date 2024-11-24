@@ -16,6 +16,7 @@ function fibonnaci(n) {
         return 1;
     } else {
         return fibonnaci(n - 1) + fibonnaci(n - 2);
+
     }
 }
 
