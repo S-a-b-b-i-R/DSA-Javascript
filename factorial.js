@@ -5,9 +5,9 @@ function factorial(n) {
         return n * factorial(n - 1);
     }
 }
-console.time();
-console.log(dpFib(50));
-console.timeEnd();
+// console.time();
+// console.log(dpMFib(4));
+// console.timeEnd();
 // console.log(dpFib(30));
 // console.log(dpMFib(30));
 
@@ -44,3 +44,12 @@ function dpFib(n) {
     }
     return bottomUp[n];
 }
+
+//sum of natural numbers
+function recursiveSum(num) {
+    if (num <= 1) return num;
+    return num + recursiveSum(num - 1);
+}
+console.time();
+console.log(recursiveSum(100));
+console.timeEnd();
