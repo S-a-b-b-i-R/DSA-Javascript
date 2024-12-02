@@ -13,4 +13,4 @@ const canSum = (targetSum, numbers, memo = {}) => {
     return false;
 };
 
-console.log(canSum(300, [7, 14]));
+console.log(canSum(5000, [7, 10]));
