@@ -1,22 +1,22 @@
-// const bestSum = (targetSum, numbers) => {
-//     if (targetSum == 0) return [];
-//     if (targetSum < 0) return null;
-//     let shosrtestCombination = null;
-//     for (let num of numbers) {
-//         const remainder = targetSum - num;
-//         const remainderCombination = bestSum(remainder, numbers);
-//         if (remainderCombination != null) {
-//             const combination = [...remainderCombination, num];
-//             if (
-//                 shosrtestCombination == null ||
-//                 combination.length < shosrtestCombination.length
-//             ) {
-//                 shosrtestCombination = combination;
-//             }
-//         }
-//     }
-//     return shosrtestCombination;
-// };
+const bestSum = (targetSum, numbers) => {
+    if (targetSum == 0) return [];
+    if (targetSum < 0) return null;
+    let shosrtestCombination = null;
+    for (let num of numbers) {
+        const remainder = targetSum - num;
+        const remainderCombination = bestSum(remainder, numbers);
+        if (remainderCombination != null) {
+            const combination = [...remainderCombination, num];
+            if (
+                shosrtestCombination == null ||
+                combination.length < shosrtestCombination.length
+            ) {
+                shosrtestCombination = combination;
+            }
+        }
+    }
+    return shosrtestCombination;
+};
 
 const bestSumMemoized = (targetSum, numbers, memo = {}) => {
     if (targetSum in memo) return memo[targetSum];
